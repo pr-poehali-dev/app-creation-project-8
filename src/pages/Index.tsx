@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import TaskManager from '@/components/TaskManager';
 
 const dashboardData = [
   { name: 'Янв', value: 4200, target: 4000, users: 240 },
@@ -55,8 +56,12 @@ export default function Index() {
           </Button>
         </header>
 
-        <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+        <Tabs defaultValue="tasks" className="w-full">
+          <TabsList className="grid w-full grid-cols-5 mb-8">
+            <TabsTrigger value="tasks" className="gap-2">
+              <Icon name="CheckSquare" size={16} />
+              Задачи
+            </TabsTrigger>
             <TabsTrigger value="overview" className="gap-2">
               <Icon name="LayoutDashboard" size={16} />
               Обзор
@@ -74,6 +79,10 @@ export default function Index() {
               Справка
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="tasks" className="animate-fade-in">
+            <TaskManager />
+          </TabsContent>
 
           <TabsContent value="overview" className="space-y-6 animate-fade-in">
             <div className="grid gap-6 md:grid-cols-3">
